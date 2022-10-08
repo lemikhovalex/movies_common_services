@@ -24,6 +24,7 @@ services:
       - admin_db_vol:/var/lib/postgresql/data
     networks:
       - admin
+    command: -p ${POSTGRES_PORT}
 
   elasticsearch:
     image: elasticsearch:8.0.0

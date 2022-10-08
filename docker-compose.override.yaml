@@ -4,3 +4,19 @@ services:
     restart: "no"
     volumes:
       - ./../mounts/postgresql/data:/var/lib/postgresql/data
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+
+  post_processing:
+    build:
+      context: ./post_processing
+    environment:
+      ES_PORT: ${ES_PORT}
+      ES_HOST: ${ES_HOST}
+      WAIT_HOSTS: ${ES_HOST}:${ES_PORT}
+    depends_on:
+      - elasticsearch
+
+  elasticsearch:
+    ports:
+      - ${ES_PORT}:${ES_PORT}

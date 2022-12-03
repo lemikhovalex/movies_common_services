@@ -2,8 +2,6 @@ version: '3.9'
 services:
   admin_db:
     restart: "no"
-    volumes:
-      - ./../mounts/postgresql/data:/var/lib/postgresql/data
     ports:
       - ${POSTGRES_PORT}:${POSTGRES_PORT}
 

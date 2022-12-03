@@ -33,6 +33,8 @@ services:
       xpack.security.enabled: false
       discovery.type: single-node
       ES_JAVA_OPTS: -Xms1000m -Xmx1000m
+    networks:
+      - admin
 
 volumes:
   admin_db_vol:
